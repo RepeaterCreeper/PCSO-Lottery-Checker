@@ -11,6 +11,10 @@ app.get("/", function(req, res) {
     res.render("home");
 });
 
+app.post("/api/get_results/:type/", function(req, res) {
+    let type = req.params.type;
+});
+
 app.listen("80", function(err) {
     if (err) throw err;
 });
