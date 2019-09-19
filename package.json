@@ -1,0 +1,22 @@
+{
+  "name": "pcso-lottery-checker",
+  "version": "1.0.0",
+  "description": "Allows you to check your lottery ticket very efficiently.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pcso",
+    "lottery",
+    "checker"
+  ],
+  "author": "Joseph Chua <RepeaterCreeper>",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "request-promise": "^4.2.4"
+  }
+}
