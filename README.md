@@ -10,6 +10,7 @@ Well, I thought it would be cool to make a PCSO Lottery Checker web app since th
 - Automatically checks your ticket numbers if they're a winning combination or not.
 
 ### Planned Features
+- Multiple numbers check.
 - Persist Ticket Data with expiration dates. (Local Storage)
 - Winning Combination will show an estimate of how much they won. (Cumulative)
 - Make it as a desktop app using Electron.
