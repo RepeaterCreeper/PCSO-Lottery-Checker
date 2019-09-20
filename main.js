@@ -2,11 +2,27 @@ const express = require("express");
 const cheerio = require('cheerio'); // Basically jQuery for node.js
 const rp = require("request-promise");
 const bodyParser = require("body-parser");
+const utils = require("./js/utils.js");
 const app = express();
 
 /**
  * Declaration of Variables
  */
+const lotteryTypesName = [
+    "6/58 Ultra Lotto",
+    "6/55 Grand Lotto",
+    "6/49 Super Lotto",
+    "6/45 Super Lotto",
+    "6/42 Lotto",
+    "6-Digit Lotto",
+    "4-Digit Lotto",
+    "Swertres Lotto",
+    "EZ2 Lotto",
+    "STL Pares",
+    "STL Swer3",
+    "STL 2-Digit"
+];
+
 const lotteryTypesURL = [
     "https://philnews.ph/pcso-lotto-result/pcso-lotto-result-ultralotto-6-58-draw/",
     "https://philnews.ph/pcso-lotto-result/pcso-lotto-result-grand-lotto-6-55-draw/",
@@ -29,7 +45,9 @@ app.use(bodyParser.json());
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res) {
-    res.render("home");
+    res.render("home", {
+        lotteryTypesName: lotteryTypesName
+    });
 });
 
 app.post("/", function(req, res) {
@@ -70,7 +88,7 @@ app.post("/", function(req, res) {
         }
 
         res.render("results", {
-            type: type,
+            type: lotteryTypesName[type],
             results: results
         });
 
