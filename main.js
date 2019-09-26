@@ -46,13 +46,16 @@ app.set("view engine", "ejs");
 
 app.get("/", function(req, res) {
     res.render("home", {
-        lotteryTypesName: lotteryTypesName
+        lotteryTypesName: lotteryTypesName,
+        error: ""
     });
 });
 
 app.post("/", function(req, res) {
     let type = req.body.type,
         numbers = req.body.lotteryNumbers.split("-");
+
+    
     
     const options = {
         uri: lotteryTypesURL[type],
