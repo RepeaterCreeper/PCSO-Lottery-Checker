@@ -15,30 +15,44 @@
 
 <body>
     <nav>
-
     </nav>
-    <div class="container">
-        <div class="card">
-            <div class="row">
-                <form class="col s12" method="POST" action="/"  style="margin: 16px 8px;">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input placeholder="Ticket Numbers" name="lotteryNumbers" id="ticket_numbers" type="text" class="validate">
-                            <label for="ticket_numbers">Ticket Numbers</label>
-                            <span class="helper-text">Ticket Numbers are dash (-) separated or if you prefer comma (,) separated.</span>
-                        </div>
-                        <div class="col s12">
-                            <label>Lottery Type</label>
-                            <select name="type" class="browser-default">
-                                <option value="" disabled selected>Choose one</option>
-                                <% lotteryTypesName.forEach((type, index) => { %>
-                                    <option value="<%= index %>"><%= type %></option>
-                                <% }) %>
-                            </select>
+    <div class="row">
+        <div class="col s8">
+            <form method="POST" action="/">
+                <div class="card">
+                    <div class="card-header blue" style="padding: 8px;">
+                        <h5 class="title" style="padding: 0; margin: 0; font-weight: bold; color: white;">Ticket Entry</h5>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="input-field col s12">
+                                    <input placeholder="Ticket Numbers" name="lotteryNumbers" id="ticket_numbers" type="text" class="validate" required>
+                                    <label for="ticket_numbers">Ticket Numbers</label>
+                                    <span class="helper-text">Ticket Numbers are dash (-) separated or if you prefer comma (,) separated.</span>
+                                </div>
+                                <div class="col s12">
+                                    <label>Lottery Type</label>
+                                    <select name="type" class="browser-default" required>
+                                        <option value="" disabled selected>Choose one</option>
+                                        <% lotteryTypesName.forEach((type, index) => { %>
+                                            <option value="<%= index %>"><%= type %></option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                                <div class="col s12">
+                                    <label>Begin Date</label>
+                                    <input type="date" name="lotteryBeginDate" required>
+                                </div>
+                                <div class="col s12">
+                                    <label>Expire Date</label>
+                                    <input type="date" name="lotteryExpireDate" required>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <button class="btn blue waves-effect" type="submit">Check</button>
+                    <div class="card-footer">
+                        <button class="btn green waves-effect" type="submit">Check</button>
                     </div>
                 </form>
             </div>
