@@ -16,6 +16,7 @@
 <body>
     <nav>
     </nav>
+<<<<<<< HEAD
     <div class="row">
         <div class="col s8">
             <form method="POST" action="/">
@@ -49,6 +50,26 @@
                                     <input type="date" name="lotteryExpireDate" required>
                                 </div>
                             </div>
+=======
+    <div class="container">
+        <div class="card">
+            <div class="row">
+                <form class="col s12" method="POST" action="/"  style="margin: 16px 8px;">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Ticket Numbers" name="lotteryNumbers" id="ticket_numbers" type="text" class="validate" required>
+                            <label for="ticket_numbers">Ticket Numbers</label>
+                            <span class="helper-text">Ticket Numbers are dash (-) separated or if you prefer comma (,) separated.</span>
+                        </div>
+                        <div class="col s12">
+                            <label>Lottery Type</label>
+                            <select name="type" class="browser-default" required>
+                                <option value="" disabled selected>Choose one</option>
+                                <% lotteryTypesName.forEach((type, index) => { %>
+                                    <option value="<%= index %>"><%= type %></option>
+                                <% }) %>
+                            </select>
+>>>>>>> 74bf96390eb35277077a9f96718375ca3160132c
                         </div>
                     </div>
                     <div class="card-footer">
