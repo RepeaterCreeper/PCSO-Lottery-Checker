@@ -9,6 +9,11 @@ const app = express();
  * Declaration of Variables
  */
 
+/**
+ * Converting Date from: <YEAR>-<MONTH>-<DATE>
+ *                   to: <Month Full Name> <Day>, <Year>
+ * @param {String} date 
+ */
 function convertToStandard(date) {
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -22,6 +27,23 @@ function convertToStandard(date) {
 		return `${month} ${dateParts[2]}, ${dateParts[0]}`;
     }
 }
+
+/**
+ * Converts a date from <Month Full Name> <Day>, <Year> to <YEAR>-<MONTH>-<DAY>
+ * 
+ * @param {String} Date
+ */
+function dateToNumeral(date) {
+    let dateParts = date.replace(",", "").split(" ");
+
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    let monthName = dateParts[0];
+
+    return `${dateParts[2]}-${(monthNames.indexOf(monthName) + 1).padStart(2, "0")}-${dateParts[1]}`;
+
+}
+
 const lotteryTypesName = [
     "6/58 Ultra Lotto",
     "6/55 Grand Lotto",
