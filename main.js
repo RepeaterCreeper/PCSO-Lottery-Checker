@@ -93,13 +93,10 @@ app.get("/", function(req, res) {
 
 app.post("/", function(req, res) {
     let type = req.body.type,
-<<<<<<< HEAD
         numbers = req.body.lotteryNumbers.trim().split(new RegExp(/[\,\-]/));
-=======
         beginDate = req.body.lotteryBeginDate,
         expireDate = req.body.lotteryExpireDate,
         numbers = req.body.lotteryNumbers.split("-");
->>>>>>> d827b4b4ad4d61e65670f9606c0001851bf6b35d
 
         console.log(numbers);
     const options = {
