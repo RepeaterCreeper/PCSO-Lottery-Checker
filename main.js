@@ -53,10 +53,9 @@ app.get("/", function(req, res) {
 
 app.post("/", function(req, res) {
     let type = req.body.type,
-        numbers = req.body.lotteryNumbers.split("-");
+        numbers = req.body.lotteryNumbers.trim().split(new RegExp(/[\,\-]/));
 
-    
-    
+        console.log(numbers);
     const options = {
         uri: lotteryTypesURL[type],
         transform: function(body) {
