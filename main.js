@@ -40,7 +40,7 @@ function dateToNumeral(date) {
 
     let monthName = dateParts[0];
 
-    return `${dateParts[2]}-${(monthNames.indexOf(monthName) + 1).padStart(2, "0")}-${dateParts[1]}`;
+    return `${dateParts[2]}-${(monthNames.indexOf(monthName) + 1).toString().padStart(2, "0")}-${dateParts[1].padStart(2, "0")}`;
 
 }
 
@@ -97,8 +97,10 @@ app.post("/", function(req, res) {
         beginDate = req.body.lotteryBeginDate,
         expireDate = req.body.lotteryExpireDate,
         numbers = req.body.lotteryNumbers.split("-");
+    
+    beginDateNumber = parseInt(beginDate.replace(/\-/g, ""));
+    expireDateNumber = parseInt(expireDate.replace(/\-/g, ""));
 
-        console.log(numbers);
     const options = {
         uri: lotteryTypesURL[type],
         transform: function(body) {
@@ -116,9 +118,18 @@ app.post("/", function(req, res) {
                     drawDate: result[0].replace("Draw", "").trim(),
                     numbers: result[1].trim(),
                     match: [],
-                    winning: false
+                    winning: false,
+                    outOfBounds: false
                 };
             
+            dateNumber = parseInt(dateToNumeral(resultObject.drawDate).replace(/\-/g, ""));
+
+            if (dateNumber >= beginDateNumber && dateNumber <= expireDateNumber) {
+                resultObject.outOfBounds = false;
+            } else {
+                resultObject.outOfBounds = true;
+            }
+
             resultObject.numbers.split("-").forEach((number) => {
                 // Pads the beginning of the string so that it will have exactly have a length of two.
                 number = number.padStart(2, "0");
@@ -132,7 +143,7 @@ app.post("/", function(req, res) {
                 }
             });
 
-            if (!showOnlyWinning) {
+            if (!flags.showOnlyWinning) {
                 results.push(resultObject);
             } else if (resultObject.winning) {
                 results.push(resultObject);

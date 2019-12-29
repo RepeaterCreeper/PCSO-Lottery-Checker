@@ -28,7 +28,11 @@
             %>
             <% results.forEach((data) => { %>
                 <div class="col s6">
-                    <div class="card hoverable white-text <%= cssStyle['winning'][data.winning] %>">
+                    <% if (data.winning && data.outOfBounds) { %>
+                        <div class="card hoverable white-text blue">
+                    <% } else { %>
+                        <div class="card hoverable white-text <%= cssStyle['winning'][data.winning] %>">
+                    <% } %>
                         <div class="card-content">
                             <p>Draw Date: <%= data.drawDate %></p>
                             <p>Numbers: <%= data.numbers %></p>
